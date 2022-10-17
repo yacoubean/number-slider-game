@@ -64,7 +64,24 @@ def check_move(tile_num,game_tiles,board_locations):
     return open_tile
 
 
-def move_tile(new_tile_location, tile_to_move, game_layout, game_tiles):
+def is_game_over(game_tiles, board_locations):
+    player_won = True
+    tile_num = 0
+    for row_num in board_locations:
+        for col_num in board_locations[row_num]:
+            this_tile = board_locations[row_num][col_num]
+            if this_tile.tile_num != tile_num:
+                player_won = False
+                return player_won
+            tile_num += 1
+
+    return player_won
+
+
+def announce_win():
+    print('You won!')
+
+def move_tile(new_tile_location, tile_to_move, game_layout, game_tiles, board_locations):
     game_tile_to_move = game_tiles[tile_to_move]
     original_tile_loc = game_tile_to_move.board_location.split('-')
     original_tile_row = int(original_tile_loc[0])
@@ -82,3 +99,7 @@ def move_tile(new_tile_location, tile_to_move, game_layout, game_tiles):
     game_tile_to_move.anim.setEndValue(new_tile_location['qpoint'])
     game_tile_to_move.anim.setDuration(200)
     game_tile_to_move.anim.start()
+
+    player_won = is_game_over(game_tiles, board_locations)
+    if player_won:
+        announce_win()

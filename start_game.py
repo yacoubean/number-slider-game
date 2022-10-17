@@ -74,4 +74,6 @@ class ClickableQLabel(QLabel):
         valid_move_location = check_move(self.tile_num, self.game_tiles, self.board_locations)
 
         if 'qpoint' in valid_move_location:
-            self.click_signal.emit(move_tile(valid_move_location, self.tile_num, self.game_layout, self.game_tiles))
+            self.click_signal.emit(
+                move_tile(valid_move_location, self.tile_num, self.game_layout, self.game_tiles, self.board_locations)
+            )
