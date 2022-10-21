@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QApplication, QPushButton, QHBoxLayout
+from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QPushButton
 
 from start_game import *
 
@@ -8,21 +8,21 @@ class MainGameWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Number Slide Game")
-        outer_layout = QVBoxLayout()
+        self.outer_layout = QVBoxLayout()
 
-        top_menu = QHBoxLayout()
-        restart_game_btn = QPushButton("Restart game", self)
-        restart_game_btn.clicked.connect(restart_game)
-        top_menu.addWidget(restart_game_btn, alignment=Qt.AlignRight)
+        self.top_menu = QHBoxLayout()
+        new_game_btn = QPushButton("New game", self)
+        new_game_btn.clicked.connect(restart_game)
+        self.top_menu.addWidget(new_game_btn, alignment=Qt.AlignRight)
 
         self.board_locations = {}
         self.game_layout = GameLayout(self.board_locations)
         self.game_tiles = initiate_game_tiles(self, self.game_layout, self.board_locations)
-
         self.game_layout.define_layout(self.game_tiles)
-        outer_layout.addLayout(top_menu)
-        outer_layout.addLayout(self.game_layout)
-        self.setLayout(outer_layout)
+
+        self.outer_layout.addLayout(self.top_menu)
+        self.outer_layout.addLayout(self.game_layout)
+        self.setLayout(self.outer_layout)
 
 
 if __name__ == "__main__":
