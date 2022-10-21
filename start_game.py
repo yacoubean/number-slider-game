@@ -1,4 +1,5 @@
-import sys, os
+import sys
+import os
 
 from PyQt5.QtWidgets import QGridLayout, QLabel, QDialog, QDialogButtonBox, QVBoxLayout
 from PyQt5.QtGui import QPixmap
@@ -9,8 +10,8 @@ from game_play import check_move, move_tile
 
 
 def set_board_positions(board_locations):
-    for row_num in range(0,4):
-        for col_num in range(0,4):
+    for row_num in range(0, 4):
+        for col_num in range(0, 4):
             board_locations[row_num][col_num].position = board_locations[row_num][col_num].pos()
 
 
@@ -52,7 +53,9 @@ class CustomDialog(QDialog):
         dialog_buttons = QDialogButtonBox.Yes | QDialogButtonBox.No
 
         self.buttonBox = QDialogButtonBox(dialog_buttons)
+        # noinspection PyUnresolvedReferences
         self.buttonBox.accepted.connect(self.accept)
+        # noinspection PyUnresolvedReferences
         self.buttonBox.rejected.connect(self.reject)
 
         self.layout = QVBoxLayout()
@@ -69,8 +72,8 @@ class GameLayout(QGridLayout):
 
     def define_layout(self, game_tiles):
         # define the game grid layout
-        GameLayout.setHorizontalSpacing(self,0)
-        GameLayout.setVerticalSpacing(self,0)
+        GameLayout.setHorizontalSpacing(self, 0)
+        GameLayout.setVerticalSpacing(self, 0)
 
         # add the game tiles to the game grid from the game_tiles list
         tile_num = 0
@@ -90,7 +93,7 @@ class GameLayout(QGridLayout):
         empty_tile = ClickableQLabel(15, self, game_tiles, self.board_locations, None)
         empty_tile.is_empty_tile = True
         game_tiles.append(empty_tile)
-        self.addWidget(empty_tile,3,3)
+        self.addWidget(empty_tile, 3, 3)
         self.board_locations[3][3] = empty_tile
         game_tiles[15].board_location = '3-3'
 
@@ -98,18 +101,26 @@ class GameLayout(QGridLayout):
 class ClickableQLabel(QLabel):
     click_signal = pyqtSignal(object)
 
-    def __init__(self, tile_num, game_layout, game_tiles, board_locations, announce_win):
+    def __init__(self, tile_num, game_layout, game_tiles, board_locations, announce_win_obj):
         QLabel.__init__(self)
         self.tile_num = tile_num
         self.game_tiles = game_tiles
         self.game_layout = game_layout
         self.board_locations = board_locations
-        self.announce_win = announce_win
+        self.announce_win = announce_win_obj
 
     def mouseReleaseEvent(self, ev):
         valid_move_location = check_move(self.tile_num, self.game_tiles, self.board_locations)
 
         if 'qpoint' in valid_move_location:
+            # noinspection PyUnresolvedReferences
             self.click_signal.emit(
-                move_tile(self, valid_move_location, self.tile_num, self.game_layout, self.game_tiles, self.board_locations)
+                move_tile(
+                    self,
+                    valid_move_location,
+                    self.tile_num,
+                    self.game_layout,
+                    self.game_tiles,
+                    self.board_locations
+                )
             )
