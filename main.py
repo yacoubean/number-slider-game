@@ -11,7 +11,7 @@ class MainGameClass(QWidget):
         self.setWindowTitle("Number Slide Game")
         self.board_locations = {}
         self.game_layout = GameLayout(self.board_locations)
-        self.game_tiles = initiate_game_tiles(self.game_layout, self.board_locations)
+        self.game_tiles = initiate_game_tiles(self, self.game_layout, self.board_locations)
 
         self.game_layout.define_layout(self.game_tiles)
         self.setLayout(self.game_layout)

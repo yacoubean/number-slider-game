@@ -64,7 +64,7 @@ def check_move(tile_num,game_tiles,board_locations):
     return open_tile
 
 
-def is_game_over(game_tiles, board_locations):
+def is_game_over(board_locations):
     player_won = True
     tile_num = 0
     for row_num in board_locations:
@@ -78,16 +78,13 @@ def is_game_over(game_tiles, board_locations):
     return player_won
 
 
-def announce_win():
-    print('You won!')
-
-def move_tile(new_tile_location, tile_to_move, game_layout, game_tiles, board_locations):
+def move_tile(self, new_tile_location, tile_to_move, game_layout, game_tiles, board_locations):
     game_tile_to_move = game_tiles[tile_to_move]
     original_tile_loc = game_tile_to_move.board_location.split('-')
     original_tile_row = int(original_tile_loc[0])
     original_tile_col = int(original_tile_loc[1])
     game_layout.removeWidget(game_tiles[tile_to_move])
-    game_layout.removeWidget(game_tiles[15]) # 15 is hard coded here because the open tile will always be tile_num=15
+    game_layout.removeWidget(game_tiles[15]) # 15 is hard coded here because the empty tile will always be tile_num=15
     game_layout.addWidget(game_tiles[15], original_tile_row, original_tile_col)
     game_layout.addWidget(game_tiles[tile_to_move], new_tile_location['new_row'], new_tile_location['new_col'])
 
@@ -99,7 +96,6 @@ def move_tile(new_tile_location, tile_to_move, game_layout, game_tiles, board_lo
     game_tile_to_move.anim.setEndValue(new_tile_location['qpoint'])
     game_tile_to_move.anim.setDuration(200)
     game_tile_to_move.anim.start()
-
-    player_won = is_game_over(game_tiles, board_locations)
-    if player_won:
-        announce_win()
+    # self.announce_win(self)
+    if is_game_over(board_locations):
+        self.announce_win(self)
