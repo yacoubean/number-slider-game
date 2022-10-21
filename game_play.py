@@ -39,7 +39,6 @@ def find_opening(tile_row,tile_col,board_locations):
             opening_found['new_col'] = col_right
 
     if 'qpoint' in opening_found:
-        # get the placeholder QLabel from the empty tile location
         empty_tile = board_locations[opening_found['new_row']][opening_found['new_col']]
         # store the moving tile's old position
         moving_tile_position = board_locations[tile_row][tile_col].position
@@ -96,6 +95,6 @@ def move_tile(self, new_tile_location, tile_to_move, game_layout, game_tiles, bo
     game_tile_to_move.anim.setEndValue(new_tile_location['qpoint'])
     game_tile_to_move.anim.setDuration(200)
     game_tile_to_move.anim.start()
-    # self.announce_win(self)
+    self.announce_win(self)
     if is_game_over(board_locations):
         self.announce_win(self)

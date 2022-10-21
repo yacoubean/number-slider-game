@@ -1,3 +1,5 @@
+import sys, os
+
 from PyQt5.QtWidgets import QGridLayout, QLabel, QDialog, QDialogButtonBox, QVBoxLayout
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import pyqtSignal, Qt
@@ -28,12 +30,16 @@ def initiate_game_tiles(self, game_layout, board_locations):
     return game_tiles
 
 
+def restart_game():
+    os.execl(sys.executable, sys.executable, *sys.argv)
+
+
 def announce_win(self):
     you_won_dialog = CustomDialog(self)
     if you_won_dialog.exec():
-        print("Yes")
+        restart_game()
     else:
-        print("No")
+        sys.exit("Player chose to quit the game")
 
 
 class CustomDialog(QDialog):
