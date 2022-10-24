@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QPropertyAnimation
 
 
-def find_opening(tile_row,tile_col,board_locations):
+def find_opening(tile_row, tile_col, board_locations):
     row_above = tile_row - 1
     row_below = tile_row + 1
     col_left = tile_col - 1
@@ -53,12 +53,12 @@ def find_opening(tile_row,tile_col,board_locations):
     return opening_found
 
 
-def check_move(tile_num,game_tiles,board_locations):
+def check_move(tile_num, game_tiles, board_locations):
     this_tile_loc = game_tiles[tile_num].board_location
     tile_row_col = this_tile_loc.split('-')
     this_tile_row = int(tile_row_col[0])
     this_tile_col = int(tile_row_col[1])
-    open_tile = find_opening(this_tile_row,this_tile_col,board_locations)
+    open_tile = find_opening(this_tile_row, this_tile_col, board_locations)
 
     return open_tile
 
@@ -83,7 +83,7 @@ def move_tile(self, new_tile_location, tile_to_move, game_layout, game_tiles, bo
     original_tile_row = int(original_tile_loc[0])
     original_tile_col = int(original_tile_loc[1])
     game_layout.removeWidget(game_tiles[tile_to_move])
-    game_layout.removeWidget(game_tiles[15]) # 15 is hard coded here because the empty tile will always be tile_num=15
+    game_layout.removeWidget(game_tiles[15])  # 15 is hard coded here because the empty tile will always be tile_num=15
     game_layout.addWidget(game_tiles[15], original_tile_row, original_tile_col)
     game_layout.addWidget(game_tiles[tile_to_move], new_tile_location['new_row'], new_tile_location['new_col'])
 
