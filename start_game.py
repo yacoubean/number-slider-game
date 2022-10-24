@@ -19,6 +19,9 @@ def initiate_game_tiles(self, game_layout, board_locations):
     game_tiles = []
     self.announce_win = announce_win
 
+    # comment out this os command if running from source. this is needed when running from an .exe file
+    os.chdir(sys._MEIPASS)
+
     # load the game time images as clickable labels into the game_tiles list
     for tile_no in range(0, 15):
         tile_no_img_num = tile_no + 1
