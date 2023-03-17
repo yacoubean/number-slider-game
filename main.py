@@ -15,10 +15,16 @@ class MainGameWindow(QWidget):
         new_game_btn.clicked.connect(restart_game)
         self.top_menu.addWidget(new_game_btn, alignment=Qt.AlignRight)
 
-        self.board_locations = {}
-        self.game_layout = GameLayout(self.board_locations)
-        self.game_tiles = initiate_game_tiles(self, self.game_layout, self.board_locations)
-        self.game_layout.define_layout(self.game_tiles)
+        def setup_game():
+            self.board_locations = {}
+            self.game_layout = GameLayout(self.board_locations)
+            self.game_tiles = initiate_game_tiles(self, self.game_layout, self.board_locations)
+            self.game_layout.define_layout(self.game_tiles)
+
+        setup_game()
+
+        while not self.game_layout.is_solvable():
+            setup_game()
 
         self.outer_layout.addLayout(self.top_menu)
         self.outer_layout.addLayout(self.game_layout)
