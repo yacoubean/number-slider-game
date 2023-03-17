@@ -20,7 +20,7 @@ def initiate_game_tiles(self, game_layout, board_locations):
     self.announce_win = announce_win
 
     # comment out this os command if running from source. this is needed when running from an .exe file
-    os.chdir(sys._MEIPASS)
+    # os.chdir(sys._MEIPASS)
 
     # load the game time images as clickable labels into the game_tiles list
     for tile_no in range(0, 15):
@@ -72,6 +72,7 @@ class GameLayout(QGridLayout):
     def __init__(self, board_locations):
         QGridLayout.__init__(self)
         self.board_locations = board_locations
+        self.placed_tiles = []
 
     def define_layout(self, game_tiles):
         # define the game grid layout
@@ -80,18 +81,18 @@ class GameLayout(QGridLayout):
 
         # add the game tiles to the game grid from the game_tiles list
         tile_num = 0
-        placed_tiles = []
         for row_num in range(0, 4):
             self.board_locations[row_num] = {}
             for col_num in range(0, 4):
                 if tile_num < 15:
                     # select a random tile that wasn't already placed on the game board
-                    random_tile = choice([i for i in range(0, 15) if i not in placed_tiles])
+                    random_tile = choice([i for i in range(0, 15) if i not in self.placed_tiles])
                     self.addWidget(game_tiles[random_tile], row_num, col_num)
                     self.board_locations[row_num][col_num] = game_tiles[random_tile]
                     game_tiles[random_tile].board_location = str(row_num) + '-' + str(col_num)
-                    placed_tiles.append(random_tile)
+                    self.placed_tiles.append(random_tile)
                     tile_num += 1
+
         # add a board location for the bottom right square, which always starts empty so won't have a tile in it yet
         empty_tile = ClickableQLabel(15, self, game_tiles, self.board_locations, None)
         empty_tile.is_empty_tile = True
@@ -99,6 +100,23 @@ class GameLayout(QGridLayout):
         self.addWidget(empty_tile, 3, 3)
         self.board_locations[3][3] = empty_tile
         game_tiles[15].board_location = '3-3'
+
+    # the logic for is_solvable was taken from https://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/
+    # in my case the grid is always 4x4 with empty space at bottom right, so that simplifies the logic
+    def is_solvable(self):
+        num_inversions = self.get_inversions()
+        if num_inversions % 2 == 0:
+            return True
+        return False
+
+    def get_inversions(self):
+        cnt = 0
+        for i, x in enumerate(self.placed_tiles[:-1]):
+            if x != '':
+                for y in self.placed_tiles[i + 1:]:
+                    if y != '' and int(x) > int(y):
+                        cnt += 1
+        return cnt
 
 
 class ClickableQLabel(QLabel):
