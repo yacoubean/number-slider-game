@@ -2,7 +2,7 @@ import sys
 import os
 
 from PyQt5.QtWidgets import QGridLayout, QLabel, QDialog, QDialogButtonBox, QVBoxLayout
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QFont
 from PyQt5.QtCore import pyqtSignal, Qt
 from random import choice
 
@@ -22,11 +22,11 @@ def initiate_game_tiles(self, game_layout, board_locations):
     # comment out this os command if running from source. this is needed when running from an .exe file
     # os.chdir(sys._MEIPASS)
 
-    # load the game time images as clickable labels into the game_tiles list
+    # load the game tile images as clickable labels into the game_tiles list
     for tile_no in range(0, 15):
         tile_no_img_num = tile_no + 1
         num_img = QPixmap('images\\numTile{0}.png'.format(str(tile_no_img_num)))
-        num_label = ClickableQLabel(tile_no, game_layout, game_tiles, board_locations, self.announce_win)
+        num_label = ClickableQLabel(tile_no, game_layout, game_tiles, board_locations, self.announce_win, self)
         num_label.setPixmap(num_img)
         num_label.is_empty_tile = False
         game_tiles.append(num_label)
@@ -44,6 +44,17 @@ def announce_win(self):
         restart_game()
     else:
         sys.exit("Player chose to quit the game")
+
+
+def set_move_counter(self, move_ctr):
+    move_counter = QLabel(" Moves: "+str(move_ctr), self)
+    move_counter.setFont(QFont("Arial", 10))
+    if move_ctr > 0:
+        self.top_menu.itemAt(0).widget().deleteLater() #deleteLater removes the widget from the UI at the appropriate time
+        self.top_menu.insertWidget(0, move_counter, alignment=Qt.AlignLeft)
+    else:
+        self.top_menu.addWidget(move_counter, alignment=Qt.AlignLeft)
+
 
 
 class CustomDialog(QDialog):
@@ -69,9 +80,10 @@ class CustomDialog(QDialog):
 
 
 class GameLayout(QGridLayout):
-    def __init__(self, board_locations):
+    def __init__(self, board_locations, main_scope):
         QGridLayout.__init__(self)
         self.board_locations = board_locations
+        self.main_scope = main_scope
         self.placed_tiles = []
 
     def define_layout(self, game_tiles):
@@ -94,7 +106,7 @@ class GameLayout(QGridLayout):
                     tile_num += 1
 
         # add a board location for the bottom right square, which always starts empty so won't have a tile in it yet
-        empty_tile = ClickableQLabel(15, self, game_tiles, self.board_locations, None)
+        empty_tile = ClickableQLabel(15, self, game_tiles, self.board_locations, None, self.main_scope)
         empty_tile.is_empty_tile = True
         game_tiles.append(empty_tile)
         self.addWidget(empty_tile, 3, 3)
@@ -122,13 +134,14 @@ class GameLayout(QGridLayout):
 class ClickableQLabel(QLabel):
     click_signal = pyqtSignal(object)
 
-    def __init__(self, tile_num, game_layout, game_tiles, board_locations, announce_win_obj):
+    def __init__(self, tile_num, game_layout, game_tiles, board_locations, announce_win_obj, main_scope):
         QLabel.__init__(self)
         self.tile_num = tile_num
         self.game_tiles = game_tiles
         self.game_layout = game_layout
         self.board_locations = board_locations
         self.announce_win = announce_win_obj
+        self.main_scope = main_scope
 
     def mouseReleaseEvent(self, ev):
         valid_move_location = check_move(self.tile_num, self.game_tiles, self.board_locations)
@@ -145,3 +158,5 @@ class ClickableQLabel(QLabel):
                     self.board_locations
                 )
             )
+            self.main_scope.move_ctr += 1
+            set_move_counter(self.main_scope, self.main_scope.move_ctr)
