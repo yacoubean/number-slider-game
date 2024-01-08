@@ -7,10 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02926dfe-98c7-4830-94f1-3e97bde4b056" name="Changes" comment="Moved venv folder to external directory">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+    <list default="true" id="02926dfe-98c7-4830-94f1-3e97bde4b056" name="Changes" comment="Added a counter to display the number of moves you've made in a game">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildExe.bat" beforeDir="false" afterPath="$PROJECT_DIR$/buildExe.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/NumberSlider.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/NumberSlider.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/PyQt5/QtCore.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/PyQt5/QtCore.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/PyQt5/QtGui.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/PyQt5/QtGui.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/PyQt5/QtWidgets.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/PyQt5/QtWidgets.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/PyQt5/sip.cp310-win_amd64.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/VCRUNTIME140.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/VCRUNTIME140.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/VCRUNTIME140_1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/VCRUNTIME140_1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/_bz2.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/_bz2.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/_decimal.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/_decimal.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/_hashlib.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/_hashlib.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/_lzma.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/_lzma.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/_socket.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/_socket.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/_ssl.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/_ssl.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/libcrypto-1_1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/libcrypto-1_1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/libssl-1_1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/libssl-1_1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/python3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/python3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/python310.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/select.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/select.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NumberSlider/unicodedata.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/NumberSlider/unicodedata.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_play.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_play.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/start_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/start_game.py" afterDir="false" />
     </list>
@@ -59,22 +79,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jam5245/pythonVirtualEnvirons/NumberSlider/venv/Scripts&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "full.screen.before.presentation.mode": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "C:/Users/jam5245/pythonVirtualEnvirons/NumberSlider/venv/Scripts",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Python&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jam5245\Downloads\pythonDev\NumberSlider" />
@@ -87,6 +108,7 @@
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NumberSlider" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -108,6 +130,7 @@
     </configuration>
     <configuration name="numSlide" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NumberSlider" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -129,6 +152,7 @@
     </configuration>
     <configuration name="numSlide2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NumberSlider" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -162,6 +186,13 @@
         <item itemvalue="Python.numSlide2" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -263,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1679075676037</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added a counter to display the number of moves you've made in a game">
+      <option name="closed" value="true" />
+      <created>1700669769409</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1700669769409</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -304,17 +343,7 @@
     <MESSAGE value="Now includes an EXE file for Windows, and a build file to create the executable" />
     <MESSAGE value="Will now only create a game layout that is solvable. It's possible for many layouts to be unsolvable, so excludes those for a more fun game experience" />
     <MESSAGE value="Moved venv folder to external directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved venv folder to external directory" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/start_game.py</url>
-          <line>49</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added a counter to display the number of moves you've made in a game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a counter to display the number of moves you've made in a game" />
   </component>
 </project>
