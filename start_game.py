@@ -1,6 +1,7 @@
 import sys
 import os
 
+from PyQt5 import QtTest
 from PyQt5.QtWidgets import QGridLayout, QLabel, QDialog, QDialogButtonBox, QVBoxLayout
 from PyQt5.QtGui import QPixmap, QFont
 from PyQt5.QtCore import pyqtSignal, Qt
@@ -39,6 +40,7 @@ def restart_game():
 
 
 def announce_win(self):
+    QtTest.QTest.qWait(375) # pause for 0.375 seconds before showing the "you won" message
     you_won_dialog = CustomDialog(self)
     if you_won_dialog.exec():
         restart_game()
